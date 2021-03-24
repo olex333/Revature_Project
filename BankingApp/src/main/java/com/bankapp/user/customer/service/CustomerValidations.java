@@ -2,8 +2,8 @@ package com.bankapp.user.customer.service;
 
 public class CustomerValidations {
 
-	public static boolean isValidUserName(String name) {
-		if (name != null && name.matches("[a-zA-Z0-9]{4,20}")) {
+	public static boolean isValidUserName(String i) {
+		if (i != null && i.matches("[a-zA-Z0-9]{4,20}")) {
 			return true;
 		} else {
 			return false;
@@ -19,7 +19,7 @@ public class CustomerValidations {
 	}
 
 	public static boolean isValidCity(String city) {
-		if (city != null && city.matches("[a-zA-Z]{5,20}")) {
+		if (city != null && city.matches("[a-zA-Z]{4,20}")) {
 			return true;
 		} else {
 			return false;
@@ -51,15 +51,15 @@ public class CustomerValidations {
 	}
 
 	public static boolean isValidAge(int age) {
-		if (age > 18 && age < 70) {
+		if (age >= 18 && age <= 70) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public static boolean isValidGender(String gender) {
-		if (gender != null && gender.matches("[mMfF]{1}")) {
+	public static boolean isValidGender(String i) {
+		if (i != null && i.matches("[mMfF]{1}")) {
 			return true;
 		} else {
 			return false;
@@ -67,7 +67,6 @@ public class CustomerValidations {
 	}
 
 	public static boolean isValidCustomerStatus(int status) {
-		/* Status will be 1 for active account and 2 for inactive account */
 		if (status > 0 && status < 3) {
 			return true;
 		} else {
@@ -76,7 +75,7 @@ public class CustomerValidations {
 	}
 
 	public static boolean isValidUserId(int id) {
-		/* Status will be 1 for active account and 2 for inactive account */
+	
 		if (id > 0) {
 			return true;
 		} else {

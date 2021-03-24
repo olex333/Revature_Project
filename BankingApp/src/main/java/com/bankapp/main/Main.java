@@ -1,13 +1,8 @@
 package com.bankapp.main;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import org.apache.log4j.Logger;
-
-import com.bankapp.bin.CustomerLoginService;
-import com.bankapp.bin.CustomerLoginServiceImpl;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.main.menu.MenuLogic;
 import com.bankapp.main.menu.PrintMenu;
@@ -361,10 +356,10 @@ public class Main {
 													+ " with balance " + accounts.get(i).getBalance());
 										}
 										
-										Log.info(customer);
+//										Log.info(customer);
 									} catch (BusinessException e) {
 
-										Log.info(e);
+										Log.info("Unable to view the particular customers account");
 //										menu.printCustomerLoginMenu()
 									}
 									break;
