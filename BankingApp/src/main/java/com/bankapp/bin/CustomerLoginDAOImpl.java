@@ -1,4 +1,4 @@
-package com.bankapp.user.customer.dao;
+package com.bankapp.bin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,6 @@ import org.apache.log4j.Logger;
 
 import com.bankapp.dao.dbutil.PostgresConnection;
 import com.bankapp.exception.BusinessException;
-import com.bankapp.main.Main;
 import com.bankapp.model.Account;
 import com.bankapp.model.Customer;
 import com.bankapp.model.Employee;
@@ -26,6 +25,7 @@ import com.bankapp.model.User;
 public class CustomerLoginDAOImpl implements CustomerLoginDao {
 	private static Logger Log = Logger.getLogger(CustomerLoginDAOImpl.class);
 
+	// user Customer Search
 
 	@Override
 	public User logIn(String username, String password) throws BusinessException {
@@ -73,6 +73,7 @@ public class CustomerLoginDAOImpl implements CustomerLoginDao {
 		return c;
 	}
 
+	// user Customer Search
 
 	@Override
 	public int getUserId(String username) throws BusinessException {
@@ -127,6 +128,7 @@ public class CustomerLoginDAOImpl implements CustomerLoginDao {
 				return c;
 	}
 
+	// user Customer Search
 
 	@Override
 	public Customer getCustomer(int user_id) throws BusinessException {
@@ -352,6 +354,7 @@ public class CustomerLoginDAOImpl implements CustomerLoginDao {
 		return c;
 	}
 
+	// user Customer Search
 
 	@Override
 	public Customer getCustomerByCustomerId(int customer_id) throws BusinessException {
@@ -442,7 +445,7 @@ public class CustomerLoginDAOImpl implements CustomerLoginDao {
 			preparedStatement=connection.prepareStatement(sql2);
 			preparedStatement.setDouble(1, newAccountBalance2);
 			preparedStatement.setInt(2, accountid2);
-			c1 = c1 = preparedStatement.executeUpdate();
+			c1 = preparedStatement.executeUpdate();
 			
 			connection.commit();
 			if ((c + c1) == 2) {

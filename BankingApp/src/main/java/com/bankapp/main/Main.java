@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import com.bankapp.bin.CustomerLoginService;
+import com.bankapp.bin.CustomerLoginServiceImpl;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.main.menu.MenuLogic;
 import com.bankapp.main.menu.PrintMenu;
@@ -14,8 +16,6 @@ import com.bankapp.model.Customer;
 import com.bankapp.model.Employee;
 import com.bankapp.model.Transaction;
 import com.bankapp.model.User;
-import com.bankapp.user.customer.service.CustomerLoginService;
-import com.bankapp.user.customer.service.impl.CustomerLoginServiceImpl;
 
 public class Main {
 //	private static CustomerLoginService customerLoginService = new CustomerLoginServiceImpl();
@@ -45,10 +45,11 @@ public class Main {
 //			*******************************************************************************
 			case 1:
 
-				menu.printCustomerLoginMenu();
+//				menu.printCustomerLoginMenu();
 				int ch_1 = 0;
 				do {
-
+					menu.printCustomerLoginMenu();
+					
 					try {
 						ch_1 = Integer.parseInt(scanner.nextLine());
 					} catch (NumberFormatException e) {
@@ -81,7 +82,7 @@ public class Main {
 								try {
 									ch11 = Integer.parseInt(scanner.nextLine());
 								} catch (NumberFormatException e) {
-									Log.warn(e);
+									Log.warn("Invalid Choice... Please enter a proper choice between 1-4 only");
 								}
 //								menu.printLogedInMenu();
 								switch (ch11) {
@@ -95,7 +96,7 @@ public class Main {
 												+ " with balance " + accounts.get(i).getBalance());
 									}
 									int ch_a = 0;                            
-
+									start: {
 									do {
 										boolean activeAccount = false;
 										Account account = null;
@@ -110,7 +111,7 @@ public class Main {
 											Log.info(activeAccount);
 
 										} catch (NumberFormatException | IndexOutOfBoundsException e) {
-											Log.warn(e);
+//											Log.warn(e);
 											Log.warn("Wrong choice or wrong format");
 										}
 										Log.info(activeAccount);
@@ -152,7 +153,7 @@ public class Main {
 //													*******************************************************************************
 												case 4:
 													// Here we do the transaction;
-													Log.info("Under Construction");
+//													Log.info("Under Construction");
 													try {
 														account = menuLogic.transferMoney(scanner, account, customer);
 														Log.info("The transfer was succesful");
@@ -164,11 +165,12 @@ public class Main {
 //													*******************************************************************************
 												case 5:
 													Log.info("Going to previous Menu");
-													break;
+													break start;
 												}
 											} while (ch22 != 5);
 										}
 									} while (ch_a != 9);
+									}
 									break;
 
 								// Create Account
@@ -265,7 +267,7 @@ public class Main {
 								} catch (NumberFormatException e) {
 									Log.warn(e);
 								}
-
+								int ch5 = 0;
 								switch (ch33) {
 								// case 1 would be approve or reject accounts
 								case 1:
@@ -280,7 +282,7 @@ public class Main {
 //									do {
 										boolean activeEmployee = false;
 										Account account = null;
-										int ch5 = 0;
+//										int ch5 = 0;
 //										Log.info("Select an account or press 9 to exit");
 										try {
 											ch5 = Integer.parseInt(scanner.nextLine());
@@ -329,6 +331,7 @@ public class Main {
 													break;
 												case 3:
 													Log.info("Exiting the menu");
+													ch5 = 9;
 													break;
 
 												default:
@@ -337,8 +340,9 @@ public class Main {
 													break;
 												}
 											} while (ch6 != 3);
+//											
 										}
-									} while (ch != 9);
+									} while (ch5 != 9);
 
 									Log.info("Under Construction");
 

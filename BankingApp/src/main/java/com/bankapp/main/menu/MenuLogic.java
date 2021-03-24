@@ -1,31 +1,49 @@
 package com.bankapp.main.menu;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import com.bankapp.bank.dao.BankCRUDDAO;
+import com.bankapp.bank.dao.impl.BankCRUDDAOImpl;
+import com.bankapp.bank.service.BankCRUDService;
+import com.bankapp.bank.service.BankSearchService;
+import com.bankapp.bank.service.impl.BankCRUDServiceImpl;
+import com.bankapp.bank.service.impl.BankSearchServiceImpl;
+import com.bankapp.employee.service.EmployeeCRUDService;
+import com.bankapp.employee.service.EmployeeSearchService;
+import com.bankapp.employee.service.impl.EmployeeCRUDServiceImpl;
+import com.bankapp.employee.service.impl.EmployeeSearchServiceImpl;
 import com.bankapp.exception.BusinessException;
-import com.bankapp.main.Main;
 import com.bankapp.model.Account;
 import com.bankapp.model.Customer;
 import com.bankapp.model.Employee;
 import com.bankapp.model.Transaction;
 import com.bankapp.model.User;
-import com.bankapp.user.customer.dao.CustomerLoginDAOImpl;
-import com.bankapp.user.customer.dao.CustomerLoginDao;
-import com.bankapp.user.customer.service.CustomerLoginService;
+import com.bankapp.user.customer.dao.CustomerCRUDDAO;
+import com.bankapp.user.customer.dao.impl.CustomerCRUDDAOImpl;
+import com.bankapp.user.customer.service.CustomerCRUDService;
+import com.bankapp.user.customer.service.CustomerSearchService;
 import com.bankapp.user.customer.service.CustomerValidations;
-import com.bankapp.user.customer.service.impl.CustomerLoginServiceImpl;
+import com.bankapp.user.customer.service.impl.CustomerCRUDServiceImpl;
+import com.bankapp.user.customer.service.impl.CustomerSearchServiceImpl;
 
 public class MenuLogic {
-	private static CustomerLoginService customerLoginService = new CustomerLoginServiceImpl();
-	private static CustomerLoginDao customerLoginDao = new CustomerLoginDAOImpl();
+//	private static CustomerLoginService customerLoginService = new CustomerLoginServiceImpl();
+//	private static CustomerLoginDao customerLoginDao = new CustomerLoginDAOImpl();
 	private static Logger Log = Logger.getLogger(MenuLogic.class);
 	PrintMenu menu = new PrintMenu();
-
+	CustomerCRUDDAO customerCRUDdao = new CustomerCRUDDAOImpl();
+	CustomerSearchService customerSearchService = new CustomerSearchServiceImpl();
+	CustomerCRUDService customerCRUDService = new CustomerCRUDServiceImpl();
+	BankSearchService bankSearchService = new BankSearchServiceImpl();
+	BankCRUDService bankCRUDService = new BankCRUDServiceImpl();
+	EmployeeCRUDService employeeCRUDService = new EmployeeCRUDServiceImpl();
+	EmployeeSearchService employeeSearchService = new EmployeeSearchServiceImpl();
+	BankCRUDDAO bankCRUDDAO = new BankCRUDDAOImpl();
+	
 	public User customerLogIn(Scanner scanner) throws BusinessException {
 		User user = null;
 //		menu.printCustomerLoginMenu();
@@ -34,7 +52,7 @@ public class MenuLogic {
 		Log.info("Enter password: ");
 		String password = (scanner.nextLine());
 //		try {
-		user = customerLoginService.logIn(username, password);
+		user = customerSearchService.logIn(username, password);
 //			if(user != null) {
 //				Log.info("Logging succesful");
 //			}
@@ -52,7 +70,7 @@ public class MenuLogic {
 		Log.info("Enter password: ");
 		String password = (scanner.nextLine());
 		try {
-			customerLoginService.registerNewUser(username, password);
+			customerCRUDService.registerNewUser(username, password);
 
 		} catch (BusinessException e) {
 //			e.printStackTrace();
@@ -84,9 +102,9 @@ public class MenuLogic {
 		int user_id = 0;
 		if (registrationValidation(username, password, firstname, lastname, email, phonenumber, city, age, gender)) {
 			try {
-				customerLoginService.registerNewUser(username, password);
-				user_id = customerLoginService.getUserId(username);
-				customerLoginService.registerNewCustomer(firstname, lastname, email, phonenumber, city, age, gender, user_id);
+				customerCRUDService.registerNewUser(username, password);
+				user_id = customerSearchService.getUserId(username);
+				customerCRUDService.registerNewCustomer(firstname, lastname, email, phonenumber, city, age, gender, user_id);
 
 			} catch (BusinessException e) {
 //				e.printStackTrace();
@@ -114,8 +132,8 @@ public class MenuLogic {
 	
 	public Customer getCustomerByUsername(String username) throws BusinessException {
 		int user_id = 0;
-		user_id = customerLoginService.getUserId(username);
-		Customer customer = customerLoginService.getCustomer(user_id);
+		user_id = customerSearchService.getUserId(username);
+		Customer customer = customerSearchService.getCustomer(user_id);
 		Log.info(customer);
 		return customer;
 	}
@@ -123,7 +141,7 @@ public class MenuLogic {
 	public List<Account> getAllAcountsById(int customer_id) {
 		List<Account> accounts = new ArrayList<>();
 		try {
-		accounts = customerLoginService.getAllAccountsById(customer_id);
+		accounts = bankSearchService.getAllAccountsById(customer_id);
 		} catch(BusinessException e) {
 		Log.info(e);
 		}
@@ -145,7 +163,7 @@ public class MenuLogic {
 		List<Account> accounts = new ArrayList<>();
 		int status = 2;
 		try {
-		accounts = customerLoginService.getAllAccountsByStatus(status);
+		accounts = bankSearchService.getAllAccountsByStatus(status);
 		} catch(BusinessException e) {
 		Log.info(e);
 		}
@@ -157,7 +175,7 @@ public class MenuLogic {
 		Log.info("Enter the initial deposit amount: ");
 		int deposit = (Integer.parseInt(scanner.nextLine()));
 		try {
-			c = customerLoginService.createNewAccount(customer_id , deposit);
+			c = bankCRUDService.createNewAccount(customer_id , deposit);
 		} catch (BusinessException e) {
 			
 		}
@@ -188,20 +206,20 @@ public class MenuLogic {
 		if (deposit < 0) {
 			Log.error("deposit cannot be negative");
 			transaction.setStatus("Failure");
-			c = customerLoginDao.recordTransaction(transaction);
+			c = bankCRUDDAO.recordTransaction(transaction);
 			throw new BusinessException("Unable to deposit the amount");
 		}
 		
-			c = customerLoginService.depositIntoAccount(account.getAccountid(), newBalance);
+			c = bankCRUDService.depositIntoAccount(account.getAccountid(), newBalance);
 		if (c > 0) {
 			Log.info("Successfully deposited money into your account");
 			account.setBalance(newBalance);
 			transaction.setStatus("Success");
-			c = customerLoginDao.recordTransaction(transaction);
+			c = bankCRUDDAO.recordTransaction(transaction);
 
 		} else {
 			transaction.setStatus("Failure");
-			c = customerLoginDao.recordTransaction(transaction);
+			c = bankCRUDDAO.recordTransaction(transaction);
 			throw new BusinessException("Unable to deposit the amount");
 		}
 		return account;
@@ -223,11 +241,11 @@ public class MenuLogic {
 		if (withdraw < 0) {
 			Log.error("Withdraw should a positive number");
 			transaction.setStatus("Failure");
-			c = customerLoginDao.recordTransaction(transaction);
+			c = bankCRUDDAO.recordTransaction(transaction);
 			throw new BusinessException("Unable to withdraw the amount");
 		}
 			
-		account = customerLoginService.withdrawFromAccount(account, withdraw, transaction);
+		account = bankCRUDService.withdrawFromAccount(account, withdraw, transaction);
 		return account;
 	}
 
@@ -237,7 +255,7 @@ public class MenuLogic {
 		String username = scanner.nextLine();
 		Log.info("Enter password: ");
 		String password = (scanner.nextLine());
-		employee = customerLoginService.employeelogIn(username, password);
+		employee = employeeSearchService.employeelogIn(username, password);
 
 		return employee;
 	}
@@ -251,13 +269,13 @@ public class MenuLogic {
 		String firstname = (scanner.nextLine());
 		Log.info("Enter lastname: ");
 		String lastname = (scanner.nextLine());
-		customerLoginService.registerNewEmployee(username, password,firstname,lastname);
+		employeeCRUDService.registerNewEmployee(username, password,firstname,lastname);
 	}
 
 	public void approveAccount(int accountid) throws BusinessException {
 		int c = 0;
 		int status = 1;
-		c = customerLoginDao.approveAccount(accountid, status);
+		c = bankCRUDDAO.approveAccount(accountid, status);
 		if (c<= 0) {
 			throw new BusinessException();
 		}
@@ -265,7 +283,7 @@ public class MenuLogic {
 
 	public void rejectAccount(int accountid) throws BusinessException {
 		int c = 0;
-		c = customerLoginDao.rejectAccount(accountid);
+		c = bankCRUDDAO.rejectAccount(accountid);
 		if (c<= 0) {
 			throw new BusinessException();
 		}
@@ -275,7 +293,7 @@ public class MenuLogic {
 	public Customer getCustomerById(Scanner scanner) throws BusinessException {
 		Log.info("Enter customer_id: ");
 		int customer_id = Integer.parseInt(scanner.nextLine());
-		Customer customer = customerLoginService.getCustomerByCustomerId(customer_id);
+		Customer customer = customerSearchService.getCustomerByCustomerId(customer_id);
 		Log.info(customer);
 		return customer;
 	}
@@ -286,7 +304,7 @@ public class MenuLogic {
 		Log.info("Enter account id of the account you are transfering money to : ");
 		int account_id = Integer.parseInt(scanner.nextLine());
 		try {
-			receivingAccount = customerLoginService.getAccountByAccountId(account_id);
+			receivingAccount = bankSearchService.getAccountByAccountId(account_id);
 			Log.info(receivingAccount);
 		} catch (BusinessException e) {
 			// TODO Auto-generated catch block
@@ -319,16 +337,16 @@ public class MenuLogic {
 		if (account.getBalance() - transaction_amount < 0) {
 			Log.error("Cannot transfer more funds than  current balance");
 			transaction.setStatus("Failure");
-			c = customerLoginDao.recordTransaction(transaction);
+			c = bankCRUDDAO.recordTransaction(transaction);
 			throw new BusinessException();
 		}
 		try{
-		account = customerLoginService.transferMoney(account, receivingAccount, transaction_amount);
-		c = customerLoginDao.recordTransaction(transaction);
+		account = bankCRUDService.transferMoney(account, receivingAccount, transaction_amount);
+		c = bankCRUDDAO.recordTransaction(transaction);
 		} catch (BusinessException e) {
 			Log.error("Transaction failure");
 			transaction.setStatus("Failure");
-			c = customerLoginDao.recordTransaction(transaction);
+			c = bankCRUDDAO.recordTransaction(transaction);
 			
 		}
 		Log.info(c);
@@ -341,7 +359,7 @@ public class MenuLogic {
 
 	public List<Transaction> LogOfTransactions() throws BusinessException {
 		List<Transaction> transactions = new ArrayList<>();
-		transactions = customerLoginService.getLogOfTransactions();
+		transactions = bankCRUDDAO.getLogOfTransactions();
 		return transactions;
 	}
 

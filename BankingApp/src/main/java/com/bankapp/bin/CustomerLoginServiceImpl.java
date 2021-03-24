@@ -1,31 +1,27 @@
-package com.bankapp.user.customer.service.impl;
+package com.bankapp.bin;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.bankapp.exception.BusinessException;
-import com.bankapp.main.menu.MenuLogic;
 import com.bankapp.main.menu.PrintMenu;
 import com.bankapp.model.Account;
 import com.bankapp.model.Customer;
 import com.bankapp.model.Employee;
 import com.bankapp.model.Transaction;
 import com.bankapp.model.User;
-import com.bankapp.user.customer.dao.CustomerLoginDAOImpl;
-import com.bankapp.user.customer.dao.CustomerLoginDao;
-import com.bankapp.user.customer.service.CustomerLoginService;
 import com.bankapp.user.customer.service.CustomerValidations;
 
-import jdk.internal.org.jline.utils.Log;
-import sun.util.logging.resources.logging;
+
+
 
 public class CustomerLoginServiceImpl implements CustomerLoginService {
 	private static Logger Log = Logger.getLogger(CustomerLoginServiceImpl.class);
 	PrintMenu menu = new PrintMenu();
 
 	CustomerLoginDao customerLogin = new CustomerLoginDAOImpl();
-// user service
+// user Customer Search
 	@Override
 	public User logIn(String username, String password) throws BusinessException {
 		Log.info("username " + username + " password " + password); // to test bugs
@@ -52,7 +48,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return user;
 	}
-	// user service
+	// user service Crud
 	@Override
 	public void registerNewUser(String username, String password) throws BusinessException {
 		// TODO Auto-generated method stub
@@ -69,7 +65,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 
 	}
-	// user service
+	// user service CRUD
 	@Override
 	public int registerNewCustomer(String firstname, String lastname, String email, String phonenumber, String city,
 			int age, String gender, int user_id) throws BusinessException {
@@ -83,7 +79,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return c;
 	}
-	// user service
+	// user service Search
 	@Override
 	public int getUserId(String username) throws BusinessException {
 		int id = 0;
@@ -96,7 +92,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return id;
 	}
-	// user service
+	// user service Search
 	@Override
 	public Customer getCustomer(int user_id) throws BusinessException {
 		Customer customer = null;
@@ -111,7 +107,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 			return null;
 		}
 	}
-// bank service
+// bank service Search
 	@Override
 	public List<Account> getAllAccountsById(int customer_id) throws BusinessException {
 		Log.info(customer_id);
@@ -121,7 +117,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return accounts;
 	}
-	// bank service
+	// bank service CRUD
 	@Override
 	public int createNewAccount(int customer_id, int deposit) throws BusinessException {
 		int c = 0;
@@ -132,7 +128,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return c;
 	}
-	// bank service
+	// bank service CRUD
 	@Override
 	public int depositIntoAccount(int account_id, double newBalance) throws BusinessException {
 		int c = 0;
@@ -146,7 +142,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return c;
 	}
-	// bank service
+	// bank service CRUD
 	@Override
 	public Account withdrawFromAccount(Account account, int withdraw, Transaction transaction) throws BusinessException {
 		int c = 0;
@@ -169,7 +165,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return account;
 	}
-// Employee service
+// Employee service Search
 	@Override
 	public Employee employeelogIn(String username, String password) throws BusinessException {
 		Log.info("username " + username + " password " + password); // to test bugs
@@ -189,7 +185,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return employee;
 	}
-	// Employee service
+	// Employee service CRUD
 	@Override
 	public void registerNewEmployee(String username, String password, String firstname, String lastname) throws BusinessException {
 		int c = 0;
@@ -209,7 +205,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		
 	}
 
-// Bank service
+// Bank service CRUD
 	@Override
 	public List<Account> getAllAccountsByStatus(int status) throws BusinessException {
 		List<Account> accounts = customerLogin.getAllAccountsByStatus(status);
@@ -218,7 +214,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		}
 		return accounts;
 	}
-// User/Customer Service
+// User/Customer Service SEARCH
 	@Override
 	public Customer getCustomerByCustomerId(int customer_id) throws BusinessException {
 		Customer customer = null;
@@ -233,7 +229,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 			return null;
 		}
 	}
-// BankSerivice
+// BankSerivice Search
 	@Override
 	public Account getAccountByAccountId(int account_id) throws BusinessException {
 		Account account = null;
@@ -245,7 +241,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		return account;
 		
 	} 
-	// Bank service
+	// Bank service CRUD
 	@Override
 	public Account transferMoney(Account account, Account receivingAccount, double transaction_amount) throws BusinessException {
 		double newAccountBalance = account.getBalance() - transaction_amount;
@@ -258,6 +254,7 @@ public class CustomerLoginServiceImpl implements CustomerLoginService {
 		account.setBalance(newAccountBalance);
 		return account;
 	}
+	// Bank CRUD
 	@Override
 	public List<Transaction> getLogOfTransactions() throws BusinessException {
 		List<Transaction> transactions = customerLogin.getLogOfTransactions();
