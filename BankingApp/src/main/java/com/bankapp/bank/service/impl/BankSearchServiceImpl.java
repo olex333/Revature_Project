@@ -13,12 +13,12 @@ import com.bankapp.model.Transaction;
 
 public class BankSearchServiceImpl implements BankSearchService {
 	private static Logger Log = Logger.getLogger(BankSearchServiceImpl.class);
-//	CustomerLoginDao customerLogin = new CustomerLoginDAOImpl();
+
 	BankSearchDAO BankSearch = new BankSearchDAOImpl();
 	
 	@Override
 	public List<Account> getAllAccountsById(int customer_id) throws BusinessException {
-//		Log.info(customer_id);
+
 		List<Account> accounts = BankSearch.getAllAccountsById(customer_id);
 		if (accounts.size() == 0) {
 			throw new BusinessException("No Accounts found for current customer ");

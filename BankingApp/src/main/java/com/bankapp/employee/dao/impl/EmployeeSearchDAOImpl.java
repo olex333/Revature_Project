@@ -12,23 +12,21 @@ import com.bankapp.employee.dao.EmployeeSearchDAO;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.model.Employee;
 
-public class EmployeeSearchDAOImpl implements EmployeeSearchDAO{
+public class EmployeeSearchDAOImpl implements EmployeeSearchDAO {
 	private static Logger Log = Logger.getLogger(EmployeeSearchDAOImpl.class);
-
 
 	@Override
 	public Employee employeelogIn(String username, String password) throws BusinessException {
-Employee employee = null;
-		
-		try(Connection connection=PostgresConnection.getConnection()){
+		Employee employee = null;
+
+		try (Connection connection = PostgresConnection.getConnection()) {
 			String sql = "select username, password, firstname, lastname, employee_id from banking_schema.employees where username=? and password =? ";
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, username);
 			preparedStatement.setString(2, password);
 
-			
-			ResultSet resultSet=preparedStatement.executeQuery();
-			if(resultSet.next()) {
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
 				employee = new Employee();
 				employee.setUsername(resultSet.getString("username"));
 				employee.setPassword(resultSet.getString("password"));
@@ -37,13 +35,12 @@ Employee employee = null;
 				employee.setEmployee_id(resultSet.getString("employee_id"));
 
 			}
-			} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 
-				Log.warn("Internal Error");
-				throw new BusinessException("Internal Error");
-			}
-			
-			
+			Log.warn("Internal Error");
+			throw new BusinessException("Internal Error");
+		}
+
 		return employee;
 	}
 

@@ -61,8 +61,7 @@ public class MenuLogic {
 			customerCRUDService.registerNewUser(username, password);
 
 		} catch (BusinessException e) {
-//			e.printStackTrace();
-			Log.info(e);
+			Log.info("Unable to register user");
 			menu.printCustomerLoginMenu();
 		}
 	}
@@ -95,8 +94,7 @@ public class MenuLogic {
 				customerCRUDService.registerNewCustomer(firstname, lastname, email, phonenumber, city, age, gender, user_id);
 
 			} catch (BusinessException e) {
-//				e.printStackTrace();
-				Log.info(e);
+				Log.info("Unable to Register");
 				menu.printCustomerLoginMenu();
 			}
 		} else {
@@ -122,7 +120,7 @@ public class MenuLogic {
 		int user_id = 0;
 		user_id = customerSearchService.getUserId(username);
 		Customer customer = customerSearchService.getCustomer(user_id);
-//		Log.info(customer);
+
 		return customer;
 	}
 
@@ -131,7 +129,6 @@ public class MenuLogic {
 		try {
 		accounts = bankSearchService.getAllAccountsById(customer_id);
 		} catch(BusinessException e) {
-//		Log.warn("Unable to retrieve customers accounts");
 		}
 		return accounts;
 	}
@@ -283,7 +280,7 @@ public class MenuLogic {
 		int account_id = Integer.parseInt(scanner.nextLine());
 		try {
 			receivingAccount = bankSearchService.getAccountByAccountId(account_id);
-//			Log.info(receivingAccount);
+
 		} catch (BusinessException e) {
 			Log.warn("Unable to get the customer, maybe wrong id?");
 			throw new BusinessException();

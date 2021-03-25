@@ -21,7 +21,7 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 
 	@Override
 	public int createNewAccount(int customer_id, int deposit) throws BusinessException {
-		// TODO Auto-generated method stub
+
 		int c=0;
 		try(Connection connection=PostgresConnection.getConnection()){
 			String sql = "insert into banking_schema.accounts(customer_id, balance)"
@@ -31,16 +31,15 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 			preparedStatement.setInt(2, deposit);
 			c=preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			Log.info(e); //only at development not at production/live
+			Log.info("Internal error");
 			throw new BusinessException("Internal error occured... Please contact SYSSADMIN");
 		}
-//		Log.info(c);
 		return c;
 	}
 
 	@Override
 	public int setNewAccountBalance(int account_id, double newBalance) throws BusinessException {
-		// TODO Auto-generated method stub
+
 		int c=0;
 		try(Connection connection=PostgresConnection.getConnection()){
 			String sql = "update banking_schema.accounts set balance =? where account_id=?";
@@ -49,7 +48,7 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 			preparedStatement.setInt(2, account_id);
 			c=preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			Log.info(e); //only at development not at production/live
+			Log.info(e); 
 			throw new BusinessException("Internal error occured... Please contact SYSSADMIN");
 		}
 		Log.info(c);
@@ -66,7 +65,7 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 			preparedStatement.setInt(2, accountid);
 			c=preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			Log.info(e); //only at development not at production/live
+			Log.info("Internal error");
 			throw new BusinessException("Internal error occured... Please contact SYSSADMIN");
 		}
 		Log.info(c);
@@ -82,10 +81,9 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 			preparedStatement.setInt(1, accountid);
 			c=preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			Log.info(e); //only at development not at production/live
+			Log.info("Internal error");
 			throw new BusinessException("Internal error occured... Please contact SYSSADMIN");
 		}
-		Log.info(c);
 		return c;
 	}
 
@@ -116,13 +114,12 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 				Log.info("The transaction was successful");
 			} 
 		} catch (ClassNotFoundException | SQLException e) {
-			Log.info(e); //only at development not at production/live
+			Log.info("Internal error");
 			try {
 				connection.rollback();
 				Log.warn("Rolling back the query");
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-//				e1.printStackTrace();
+
 				throw new BusinessException("Internal error occured... with roll back");
 
 			}
@@ -175,9 +172,7 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 
 				transactions.add(transaction);
 			}
-//			if(accountList.size()==0) {
-//				throw new BusinessException("No accounts found for the current customer ");
-//			}
+
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new BusinessException("Internal error");
 		}

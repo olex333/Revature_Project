@@ -67,9 +67,7 @@ public class BankSearchDAOImpl implements BankSearchDAO {
 				accountList.add(account);
 				}
 			}
-//			if(accountList.size()==0) {
-//				throw new BusinessException("No accounts found for the current customer ");
-//			}
+
 		} catch (ClassNotFoundException | SQLException e) {
 			Log.warn("Internal error");
 			throw new BusinessException("Internal error");
@@ -97,7 +95,6 @@ public class BankSearchDAOImpl implements BankSearchDAO {
 
 			}
 			} catch (ClassNotFoundException | SQLException e) {
-//				Log.info(e);
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}

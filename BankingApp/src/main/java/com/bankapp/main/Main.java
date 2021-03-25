@@ -49,7 +49,7 @@ public class Main {
 					}
 					boolean logedIn = false;
 					switch (ch_1) {
-					//// 1111 User logging
+					//// 1111 User logging in
 //					*******************************************************************************
 					case 1:
 						// Login
@@ -60,9 +60,9 @@ public class Main {
 							user = menuLogic.customerLogIn(scanner);
 							customer = menuLogic.getCustomerByUsername(user.getUsername());
 							logedIn = true;
-//							Log.info(customer);
+
 						} catch (BusinessException e) {
-//							Log.info(e);
+
 							Log.warn("Entered User name and password do not match our records");
 
 						}
@@ -75,7 +75,7 @@ public class Main {
 								} catch (NumberFormatException e) {
 									Log.warn("Please enter a number only");
 								}
-//								menu.printLogedInMenu();
+
 								switch (ch11) {
 								// View Accounts
 //								*******************************************************************************
@@ -102,7 +102,6 @@ public class Main {
 											Log.info(activeAccount);
 
 										} catch (NumberFormatException | IndexOutOfBoundsException e) {
-//											Log.warn(e);
 											Log.warn("Wrong choice or wrong format");
 										}
 										Log.info(activeAccount);
@@ -120,11 +119,13 @@ public class Main {
 
 //											*******************************************************************************
 												case 1:
+													// View account balance
 													Log.info("The account balance is : " + account.getBalance());
 													break;
 
 //											*******************************************************************************
 												case 2:
+													// Deposit money into account
 													try {
 														account = menuLogic.depositIntoAccount(scanner, account, customer);
 													} catch (BusinessException e) {
@@ -134,6 +135,7 @@ public class Main {
 
 //													*******************************************************************************
 												case 3:
+													// Withdraw money from account
 													try {
 														account = menuLogic.withdrawFromAccount(scanner, account, customer);
 													} catch (BusinessException e) {
@@ -143,8 +145,7 @@ public class Main {
 
 //													*******************************************************************************
 												case 4:
-													// Here we do the transaction;
-//													Log.info("Under Construction");
+													// Here we do the transaction;;
 													try {
 														account = menuLogic.transferMoney(scanner, account, customer);
 														Log.info("The transfer was succesful");
@@ -188,7 +189,7 @@ public class Main {
 							} while (ch11 != 3);
 						}
 
-//						menu.printCustomerLoginMenu();
+
 						break;
 
 //						*******************************************************************************
@@ -196,10 +197,10 @@ public class Main {
 						// User Registration
 						Log.info("User registration");
 						try {
-//							menuLogic.userRegistration(scanner);
+
 							menuLogic.Registration(scanner);
 						} catch (BusinessException e) {
-							// TODO Auto-generated catch block
+
 							e.printStackTrace();
 						}
 
@@ -220,6 +221,7 @@ public class Main {
 
 				break;
 //			*******************************************************************************
+				// Employee Side
 			case 2:
 
 
@@ -241,11 +243,9 @@ public class Main {
 						try {
 							employee = menuLogic.EmpoyeeLogIn(scanner);
 							employeelogedIn = true;
-//							Log.info(employee);
-//							Log.info(employeelogedIn);
+
 
 						} catch (BusinessException e) {
-//					e.printStackTrace();
 							Log.warn("Entered User name and password are invalid");
 						}
 
@@ -263,10 +263,8 @@ public class Main {
 								// case 1 would be approve or reject accounts
 								case 1:
 									do {
-//									Log.info("Here are the accounts pending approval or rejection");
 									List<Account> accounts = menuLogic.getAllPendingAcounts();
 									if (accounts.size() == 0) {
-//										Log.warn("No pending accounts found");
 										break;
 									}
 									Log.info("Here are the accounts pending approval or rejection");
@@ -287,10 +285,9 @@ public class Main {
 											}
 											account = accounts.get((ch5 - 1));
 											activeEmployee = true;
-//											Log.info(activeEmployee);
+
 
 										} catch (NumberFormatException | IndexOutOfBoundsException e) {
-//											Log.warn(e);
 											Log.warn("Wrong choice or wrong format");
 										}
 										if (activeEmployee) {
@@ -321,7 +318,6 @@ public class Main {
 													} catch (BusinessException e) {
 														Log.warn("Unable to Reject the account");
 													}
-//													ch6 = 3;
 													break start1;
 												case 3:
 													Log.info("Exiting the menu");
@@ -367,13 +363,13 @@ public class Main {
 									break;
 
 								case 3:
+									// View log of transactions
 									Log.info("Here is the Log of Transactions");
 									try {
 										
 									List<Transaction> transactions = menuLogic.LogOfTransactions();
-//									Transaction transaction = null;
+
 									for (int i = 0; i < transactions.size(); i++) {
-//										transaction = transactions.get(i);
 										Log.info(transactions.get(i).toString());
 												
 									}
@@ -403,7 +399,6 @@ public class Main {
 						try {
 							menuLogic.createNewEmployeeAccount(scanner);
 						} catch (BusinessException e) {
-//							Log.warn("The information enter is invalid format");
 						}
 						break;
 						
@@ -419,12 +414,11 @@ public class Main {
 
 					}
 				} while (ch22 != 3);
-				//// 1111 User logging
 				break;
 
 //				*******************************************************************************
 			case 3:
-				Log.info("Thank you for using our banking app," + " Hope you to see you again in the future");
+				Log.info("Thank you for using our banking app," + " Hope you to see you again in the future!");
 				break;
 
 			default:

@@ -33,12 +33,11 @@ public class CustomerSearchDAOImpl implements  CustomerSearchDAO {
 				user.setPassword(resultSet.getString("passwords"));
 			}
 			} catch (ClassNotFoundException | SQLException e) {
-//				Log.info(user);
-//				Log.info(e);
+
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}
-//		Log.info(user);
+
 			
 			
 		return user;
@@ -94,12 +93,11 @@ public class CustomerSearchDAOImpl implements  CustomerSearchDAO {
 
 			}
 			} catch (ClassNotFoundException | SQLException e) {
-//				Log.info(user);
-//				Log.info(e);
+
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}
-//		Log.info(customer);
+
 			
 			
 		return customer;
@@ -131,8 +129,7 @@ public class CustomerSearchDAOImpl implements  CustomerSearchDAO {
 
 			}
 			} catch (ClassNotFoundException | SQLException e) {
-//				Log.info(user);
-				Log.info(e);
+
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}

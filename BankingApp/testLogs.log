@@ -2381,3 +2381,162 @@ Menu     -  Mar-25-21 Thursday MDT 06:56:38
 {INFO} - [com.bankapp.main.menu.PrintMenu] -    2) View customers Bank Account     -  Mar-25-21 Thursday MDT 06:56:38
 {INFO} - [com.bankapp.main.menu.PrintMenu] -    3) View log of all the transactions     -  Mar-25-21 Thursday MDT 06:56:38
 {INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Exit     -  Mar-25-21 Thursday MDT 06:56:38
+{INFO} - [com.bankapp.main.Main] -    Welcome to the Extra Credit Union Bank     -  Mar-25-21 Thursday MDT 07:28:48
+{INFO} - [com.bankapp.main.Main] -    ================     -  Mar-25-21 Thursday MDT 07:28:48
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    User MENU     -  Mar-25-21 Thursday MDT 07:28:48
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    ------------------     -  Mar-25-21 Thursday MDT 07:28:48
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    Are you a employee or customer?     -  Mar-25-21 Thursday MDT 07:28:48
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Customer     -  Mar-25-21 Thursday MDT 07:28:48
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Employee     -  Mar-25-21 Thursday MDT 07:28:48
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:28:48
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:28:50
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Login     -  Mar-25-21 Thursday MDT 07:28:50
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Register for an account     -  Mar-25-21 Thursday MDT 07:28:50
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:28:50
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter username:      -  Mar-25-21 Thursday MDT 07:28:51
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter password:      -  Mar-25-21 Thursday MDT 07:28:54
+{INFO} - [com.bankapp.user.customer.service.impl.CustomerSearchServiceImpl] -    Loggin succesful     -  Mar-25-21 Thursday MDT 07:28:57
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:28:57
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) View accounts     -  Mar-25-21 Thursday MDT 07:28:57
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Create account     -  Mar-25-21 Thursday MDT 07:28:57
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:28:57
+{INFO} - [com.bankapp.main.Main] -    Here are the accounts 
+     -  Mar-25-21 Thursday MDT 07:29:00
+{INFO} - [com.bankapp.main.Main] -    1) account id 8 with balance 1765.0     -  Mar-25-21 Thursday MDT 07:29:01
+{INFO} - [com.bankapp.main.Main] -    2) account id 7 with balance 1235.0     -  Mar-25-21 Thursday MDT 07:29:01
+{INFO} - [com.bankapp.main.Main] -    
+Select an account or press 9 to exit     -  Mar-25-21 Thursday MDT 07:29:01
+{INFO} - [com.bankapp.main.Main] -    true     -  Mar-25-21 Thursday MDT 07:29:02
+{INFO} - [com.bankapp.main.Main] -    true     -  Mar-25-21 Thursday MDT 07:29:02
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:02
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) View balance     -  Mar-25-21 Thursday MDT 07:29:02
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Make a deposit     -  Mar-25-21 Thursday MDT 07:29:02
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Withdraw money     -  Mar-25-21 Thursday MDT 07:29:02
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Transfer money to another account     -  Mar-25-21 Thursday MDT 07:29:02
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    5) Exit     -  Mar-25-21 Thursday MDT 07:29:02
+{INFO} - [com.bankapp.main.Main] -    The account balance is : 1235.0     -  Mar-25-21 Thursday MDT 07:29:04
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:04
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) View balance     -  Mar-25-21 Thursday MDT 07:29:04
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Make a deposit     -  Mar-25-21 Thursday MDT 07:29:04
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Withdraw money     -  Mar-25-21 Thursday MDT 07:29:04
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Transfer money to another account     -  Mar-25-21 Thursday MDT 07:29:04
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    5) Exit     -  Mar-25-21 Thursday MDT 07:29:04
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter the  deposit amount:      -  Mar-25-21 Thursday MDT 07:29:06
+{INFO} - [com.bankapp.bank.dao.impl.BankCRUDDAOImpl] -    1     -  Mar-25-21 Thursday MDT 07:29:07
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Successfully deposited money into your account     -  Mar-25-21 Thursday MDT 07:29:07
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:07
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) View balance     -  Mar-25-21 Thursday MDT 07:29:07
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Make a deposit     -  Mar-25-21 Thursday MDT 07:29:07
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Withdraw money     -  Mar-25-21 Thursday MDT 07:29:07
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Transfer money to another account     -  Mar-25-21 Thursday MDT 07:29:07
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    5) Exit     -  Mar-25-21 Thursday MDT 07:29:07
+{INFO} - [com.bankapp.main.Main] -    The account balance is : 1246.0     -  Mar-25-21 Thursday MDT 07:29:11
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:11
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) View balance     -  Mar-25-21 Thursday MDT 07:29:11
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Make a deposit     -  Mar-25-21 Thursday MDT 07:29:11
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Withdraw money     -  Mar-25-21 Thursday MDT 07:29:11
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Transfer money to another account     -  Mar-25-21 Thursday MDT 07:29:11
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    5) Exit     -  Mar-25-21 Thursday MDT 07:29:11
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter the  withdraw amount:      -  Mar-25-21 Thursday MDT 07:29:14
+{INFO} - [com.bankapp.bank.dao.impl.BankCRUDDAOImpl] -    1     -  Mar-25-21 Thursday MDT 07:29:15
+{INFO} - [com.bankapp.bank.service.impl.BankCRUDServiceImpl] -    The withdraw was succesful     -  Mar-25-21 Thursday MDT 07:29:15
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:15
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) View balance     -  Mar-25-21 Thursday MDT 07:29:15
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Make a deposit     -  Mar-25-21 Thursday MDT 07:29:15
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Withdraw money     -  Mar-25-21 Thursday MDT 07:29:15
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Transfer money to another account     -  Mar-25-21 Thursday MDT 07:29:15
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    5) Exit     -  Mar-25-21 Thursday MDT 07:29:15
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter account id of the account you are transfering money to :      -  Mar-25-21 Thursday MDT 07:29:16
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter the transfer amount :      -  Mar-25-21 Thursday MDT 07:29:17
+{INFO} - [com.bankapp.bank.service.impl.BankCRUDServiceImpl] -    The new balance is 1213.0     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.bank.dao.impl.BankCRUDDAOImpl] -    The transaction was successful     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    1     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.Main] -    The transfer was succesful     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) View balance     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Make a deposit     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Withdraw money     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Transfer money to another account     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    5) Exit     -  Mar-25-21 Thursday MDT 07:29:19
+{INFO} - [com.bankapp.main.Main] -    Going to previous Menu     -  Mar-25-21 Thursday MDT 07:29:21
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:21
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) View accounts     -  Mar-25-21 Thursday MDT 07:29:21
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Create account     -  Mar-25-21 Thursday MDT 07:29:21
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:29:21
+{INFO} - [com.bankapp.main.Main] -    Going back to Previos menu     -  Mar-25-21 Thursday MDT 07:29:23
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:23
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Login     -  Mar-25-21 Thursday MDT 07:29:23
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Register for an account     -  Mar-25-21 Thursday MDT 07:29:23
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:29:23
+{INFO} - [com.bankapp.main.Main] -    Going to the previous Menu     -  Mar-25-21 Thursday MDT 07:29:25
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    User MENU     -  Mar-25-21 Thursday MDT 07:29:25
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    ------------------     -  Mar-25-21 Thursday MDT 07:29:25
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    Are you a employee or customer?     -  Mar-25-21 Thursday MDT 07:29:25
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Customer     -  Mar-25-21 Thursday MDT 07:29:25
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Employee     -  Mar-25-21 Thursday MDT 07:29:25
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:29:25
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+ Employee Menu     -  Mar-25-21 Thursday MDT 07:29:26
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Login     -  Mar-25-21 Thursday MDT 07:29:26
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Register for an account     -  Mar-25-21 Thursday MDT 07:29:26
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:29:26
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter username:      -  Mar-25-21 Thursday MDT 07:29:27
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter password:      -  Mar-25-21 Thursday MDT 07:29:30
+{INFO} - [com.bankapp.employee.service.impl.EmployeeSearchServiceImpl] -    Employee has been succesfully retrieved     -  Mar-25-21 Thursday MDT 07:29:32
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:32
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Approve or Reject Accounts     -  Mar-25-21 Thursday MDT 07:29:32
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) View customers Bank Account     -  Mar-25-21 Thursday MDT 07:29:32
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) View log of all the transactions     -  Mar-25-21 Thursday MDT 07:29:32
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Exit     -  Mar-25-21 Thursday MDT 07:29:32
+{WARN} - [com.bankapp.main.menu.MenuLogic] -    No pending accounts found     -  Mar-25-21 Thursday MDT 07:29:33
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:33
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Approve or Reject Accounts     -  Mar-25-21 Thursday MDT 07:29:33
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) View customers Bank Account     -  Mar-25-21 Thursday MDT 07:29:33
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) View log of all the transactions     -  Mar-25-21 Thursday MDT 07:29:33
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Exit     -  Mar-25-21 Thursday MDT 07:29:33
+{INFO} - [com.bankapp.main.menu.MenuLogic] -    Enter customer_id:      -  Mar-25-21 Thursday MDT 07:29:35
+{INFO} - [com.bankapp.main.Main] -    Here is the list of customers bank accounts
+     -  Mar-25-21 Thursday MDT 07:29:36
+{INFO} - [com.bankapp.main.Main] -    1) account id 9 with balance 889.0     -  Mar-25-21 Thursday MDT 07:29:36
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:36
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Approve or Reject Accounts     -  Mar-25-21 Thursday MDT 07:29:36
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) View customers Bank Account     -  Mar-25-21 Thursday MDT 07:29:36
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) View log of all the transactions     -  Mar-25-21 Thursday MDT 07:29:36
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Exit     -  Mar-25-21 Thursday MDT 07:29:36
+{INFO} - [com.bankapp.main.Main] -    Here is the Log of Transactions     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.Main] -    Transaction [date=2021-03-25 07:29:08.0, customerid=3, accountid=7, target_id=0, amount=11.0, status=Success, type=1]     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.Main] -    Transaction [date=2021-03-25 07:29:15.0, customerid=3, accountid=7, target_id=0, amount=11.0, status=Success, type=2]     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.Main] -    Transaction [date=2021-03-25 07:29:19.0, customerid=3, accountid=5, target_id=5, amount=22.0, status=Success, type=3]     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+Menu     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Approve or Reject Accounts     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) View customers Bank Account     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) View log of all the transactions     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    4) Exit     -  Mar-25-21 Thursday MDT 07:29:40
+{INFO} - [com.bankapp.main.Main] -    Exiting the current Menu and going to the previous Menu     -  Mar-25-21 Thursday MDT 07:29:59
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    
+ Employee Menu     -  Mar-25-21 Thursday MDT 07:29:59
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Login     -  Mar-25-21 Thursday MDT 07:29:59
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Register for an account     -  Mar-25-21 Thursday MDT 07:29:59
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:29:59
+{INFO} - [com.bankapp.main.Main] -    Exiting to previous Menu     -  Mar-25-21 Thursday MDT 07:30:00
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    User MENU     -  Mar-25-21 Thursday MDT 07:30:00
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    ------------------     -  Mar-25-21 Thursday MDT 07:30:00
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    Are you a employee or customer?     -  Mar-25-21 Thursday MDT 07:30:00
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    1) Customer     -  Mar-25-21 Thursday MDT 07:30:00
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    2) Employee     -  Mar-25-21 Thursday MDT 07:30:00
+{INFO} - [com.bankapp.main.menu.PrintMenu] -    3) Exit     -  Mar-25-21 Thursday MDT 07:30:00
+{INFO} - [com.bankapp.main.Main] -    Thank you for using our banking app, Hope you to see you again in the future     -  Mar-25-21 Thursday MDT 07:30:02

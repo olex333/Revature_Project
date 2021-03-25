@@ -30,7 +30,6 @@ public class CustomerCRUDServiceImpl implements CustomerCRUDService {
 	@Override
 	public int registerNewCustomer(String firstname, String lastname, String email, String phonenumber, String city,
 			int age, String gender, int user_id) throws BusinessException {
-		// TODO Auto-generated method stub
 		int c = 0;
 		c = customerCRUD.registerNewCustomer(firstname, lastname, email, phonenumber, city, age, gender, user_id);
 		if (c > 0) {

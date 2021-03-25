@@ -31,7 +31,6 @@ public class CustomerSearchServiceImpl implements CustomerSearchService {
 
 			}
 		} else {
-//			menu.printCustomerLoginMenu();
 			throw new BusinessException("Entered User name and password are invalid format");
 		}
 		return user;
