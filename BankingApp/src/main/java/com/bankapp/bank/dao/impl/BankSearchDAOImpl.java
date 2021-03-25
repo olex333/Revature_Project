@@ -10,13 +10,12 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.bankapp.bank.dao.BankSearchDAO;
-import com.bankapp.bin.CustomerLoginDAOImpl;
 import com.bankapp.dao.dbutil.PostgresConnection;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.model.Account;
 
 public class BankSearchDAOImpl implements BankSearchDAO {
-	private static Logger Log = Logger.getLogger(CustomerLoginDAOImpl.class);
+	private static Logger Log = Logger.getLogger(BankSearchDAOImpl.class);
 
 
 	@Override
@@ -43,7 +42,7 @@ public class BankSearchDAOImpl implements BankSearchDAO {
 				throw new BusinessException("No accounts found for the current customer ");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e);
+			Log.warn("Internal error");
 			throw new BusinessException("Internal error");
 		}
 		return accountList;
@@ -72,7 +71,7 @@ public class BankSearchDAOImpl implements BankSearchDAO {
 //				throw new BusinessException("No accounts found for the current customer ");
 //			}
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e);
+			Log.warn("Internal error");
 			throw new BusinessException("Internal error");
 		}
 		return accountList;

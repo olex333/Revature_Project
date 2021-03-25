@@ -7,17 +7,16 @@ import org.apache.log4j.Logger;
 import com.bankapp.bank.dao.BankCRUDDAO;
 import com.bankapp.bank.dao.impl.BankCRUDDAOImpl;
 import com.bankapp.bank.service.BankCRUDService;
-import com.bankapp.bin.CustomerLoginServiceImpl;
+
 import com.bankapp.exception.BusinessException;
 import com.bankapp.main.menu.PrintMenu;
 import com.bankapp.model.Account;
 import com.bankapp.model.Transaction;
 
 public class BankCRUDServiceImpl implements BankCRUDService {
-	private static Logger Log = Logger.getLogger(CustomerLoginServiceImpl.class);
+	private static Logger Log = Logger.getLogger(BankCRUDServiceImpl.class);
 	PrintMenu menu = new PrintMenu();
 	BankCRUDDAO bankCRUD = new BankCRUDDAOImpl();
-
 
 	@Override
 	public int createNewAccount(int customer_id, int deposit) throws BusinessException {

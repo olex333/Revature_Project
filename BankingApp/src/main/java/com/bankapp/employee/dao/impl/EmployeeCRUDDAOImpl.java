@@ -8,6 +8,8 @@ import com.bankapp.dao.dbutil.PostgresConnection;
 import com.bankapp.employee.dao.EmployeeCRUDDAO;
 import com.bankapp.exception.BusinessException;
 
+import jdk.internal.org.jline.utils.Log;
+
 public class EmployeeCRUDDAOImpl implements EmployeeCRUDDAO{
 
 	@Override
@@ -23,7 +25,7 @@ public class EmployeeCRUDDAOImpl implements EmployeeCRUDDAO{
 			preparedStatement.setString(4, lastname);
 			c=preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e); //only at development not at production/live
+			Log.warn("Internal error");
 			throw new BusinessException("Internal error occured... Please contact SYSSADMIN");
 		}
 		

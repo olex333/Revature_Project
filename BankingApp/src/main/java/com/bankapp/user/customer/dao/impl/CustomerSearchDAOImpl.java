@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import com.bankapp.bin.CustomerLoginDAOImpl;
 import com.bankapp.dao.dbutil.PostgresConnection;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.model.Customer;
@@ -15,7 +14,7 @@ import com.bankapp.model.User;
 import com.bankapp.user.customer.dao.CustomerSearchDAO;
 
 public class CustomerSearchDAOImpl implements  CustomerSearchDAO {
-	private static Logger Log = Logger.getLogger(CustomerLoginDAOImpl.class);
+	private static Logger Log = Logger.getLogger(CustomerSearchDAOImpl.class);
 	
 	@Override
 	public User logIn(String username, String password) throws BusinessException {

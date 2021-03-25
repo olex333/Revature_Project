@@ -1,8 +1,6 @@
 package com.bankapp.employee.service.impl;
 
 import org.apache.log4j.Logger;
-
-import com.bankapp.bin.CustomerLoginServiceImpl;
 import com.bankapp.employee.dao.EmployeeCRUDDAO;
 import com.bankapp.employee.dao.EmployeeSearchDAO;
 import com.bankapp.employee.dao.impl.EmployeeCRUDDAOImpl;
@@ -12,7 +10,7 @@ import com.bankapp.exception.BusinessException;
 import com.bankapp.user.customer.service.CustomerValidations;
 
 public class EmployeeCRUDServiceImpl implements EmployeeCRUDService {
-	private static Logger Log = Logger.getLogger(CustomerLoginServiceImpl.class);
+	private static Logger Log = Logger.getLogger(EmployeeCRUDServiceImpl.class);
 	EmployeeCRUDDAO employeeCRUD = new EmployeeCRUDDAOImpl();
 	
 	@Override

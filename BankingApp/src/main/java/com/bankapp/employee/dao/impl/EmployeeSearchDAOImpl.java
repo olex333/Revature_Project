@@ -7,14 +7,13 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import com.bankapp.bin.CustomerLoginDAOImpl;
 import com.bankapp.dao.dbutil.PostgresConnection;
 import com.bankapp.employee.dao.EmployeeSearchDAO;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.model.Employee;
 
 public class EmployeeSearchDAOImpl implements EmployeeSearchDAO{
-	private static Logger Log = Logger.getLogger(CustomerLoginDAOImpl.class);
+	private static Logger Log = Logger.getLogger(EmployeeSearchDAOImpl.class);
 
 
 	@Override

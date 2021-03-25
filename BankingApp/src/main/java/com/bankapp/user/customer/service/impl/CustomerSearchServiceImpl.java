@@ -2,7 +2,6 @@ package com.bankapp.user.customer.service.impl;
 
 import org.apache.log4j.Logger;
 
-import com.bankapp.bin.CustomerLoginServiceImpl;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.model.Customer;
 import com.bankapp.model.User;
@@ -12,7 +11,7 @@ import com.bankapp.user.customer.service.CustomerSearchService;
 import com.bankapp.user.customer.service.CustomerValidations;
 
 public class CustomerSearchServiceImpl implements CustomerSearchService {
-	private static Logger Log = Logger.getLogger(CustomerLoginServiceImpl.class);
+	private static Logger Log = Logger.getLogger(CustomerSearchServiceImpl.class);
 	CustomerSearchDAO customerSearch = new CustomerSearchDAOImpl();
 
 	public User logIn(String username, String password) throws BusinessException {

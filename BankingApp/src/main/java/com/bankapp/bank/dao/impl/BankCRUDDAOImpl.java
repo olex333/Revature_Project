@@ -11,13 +11,12 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.bankapp.bank.dao.BankCRUDDAO;
-import com.bankapp.bin.CustomerLoginDAOImpl;
 import com.bankapp.dao.dbutil.PostgresConnection;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.model.Transaction;
 
 public class BankCRUDDAOImpl implements BankCRUDDAO {
-	private static Logger Log = Logger.getLogger(CustomerLoginDAOImpl.class);
+	private static Logger Log = Logger.getLogger(BankCRUDDAOImpl.class);
 
 
 	@Override
@@ -150,7 +149,6 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 
 			c=preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e); //only at development not at production/live
 			throw new BusinessException("Internal error occured... Please contact SYSSADMIN");
 		}
 		
@@ -181,7 +179,6 @@ public class BankCRUDDAOImpl implements BankCRUDDAO {
 //				throw new BusinessException("No accounts found for the current customer ");
 //			}
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e);
 			throw new BusinessException("Internal error");
 		}
 		return transactions;

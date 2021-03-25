@@ -22,10 +22,8 @@ public class Main {
 		Log.info("Welcome to the Extra Credit Union Bank");
 		Log.info("================");
 		PrintMenu menu = new PrintMenu();
-
 		int ch = 0;
 		Scanner scanner = new Scanner(System.in);
-
 		do {
 
 			menu.printUserMenu();

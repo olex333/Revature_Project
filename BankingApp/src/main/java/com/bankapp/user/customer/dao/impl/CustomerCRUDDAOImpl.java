@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.bankapp.dao.dbutil.PostgresConnection;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.user.customer.dao.CustomerCRUDDAO;
 
-public class CustomerCRUDDAOImpl implements CustomerCRUDDAO {
 
+public class CustomerCRUDDAOImpl implements CustomerCRUDDAO {
+	private static Logger Log = Logger.getLogger(CustomerCRUDDAOImpl.class);
 	@Override
 	public int registerNewUser(String username, String password) throws BusinessException {
 		int c=0;
@@ -20,7 +23,7 @@ public class CustomerCRUDDAOImpl implements CustomerCRUDDAO {
 			preparedStatement.setString(2, password);
 			c=preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e); //only at development not at production/live
+			Log.error("Internal Error"); 
 			throw new BusinessException("Internal error occured... Please contact SYSSADMIN");
 		}
 		
@@ -46,7 +49,7 @@ public class CustomerCRUDDAOImpl implements CustomerCRUDDAO {
 			preparedStatement.setInt(8, user_id);
 			c=preparedStatement.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println(e); //only at development not at production/live
+			Log.error("Internal Error"); 
 			throw new BusinessException("Internal error occured... Please contact SYSSADMIN");
 		}
 		

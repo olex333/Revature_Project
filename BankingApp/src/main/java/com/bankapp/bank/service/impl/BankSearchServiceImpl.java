@@ -7,14 +7,12 @@ import org.apache.log4j.Logger;
 import com.bankapp.bank.dao.BankSearchDAO;
 import com.bankapp.bank.dao.impl.BankSearchDAOImpl;
 import com.bankapp.bank.service.BankSearchService;
-import com.bankapp.bin.CustomerLoginDAOImpl;
-import com.bankapp.bin.CustomerLoginDao;
 import com.bankapp.exception.BusinessException;
 import com.bankapp.model.Account;
 import com.bankapp.model.Transaction;
 
 public class BankSearchServiceImpl implements BankSearchService {
-	private static Logger Log = Logger.getLogger(CustomerLoginDAOImpl.class);
+	private static Logger Log = Logger.getLogger(BankSearchServiceImpl.class);
 //	CustomerLoginDao customerLogin = new CustomerLoginDAOImpl();
 	BankSearchDAO BankSearch = new BankSearchDAOImpl();
 	
