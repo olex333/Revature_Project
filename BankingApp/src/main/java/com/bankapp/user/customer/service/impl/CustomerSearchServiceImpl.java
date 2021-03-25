@@ -16,15 +16,12 @@ public class CustomerSearchServiceImpl implements CustomerSearchService {
 	CustomerSearchDAO customerSearch = new CustomerSearchDAOImpl();
 
 	public User logIn(String username, String password) throws BusinessException {
-		Log.info("username " + username + " password " + password); // to test bugs
 		User user = null;
 		if (CustomerValidations.isValidPassword(password) && CustomerValidations.isValidUserName(username)) {
-			// code to dao
 			user = customerSearch.logIn(username, password);
-			Log.info(user + " from service after db has gone through");
 			if (user != null) {
 				if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-					Log.info("Loggin succesful and matches user name and password");
+					Log.info("Loggin succesful");
 				} else {
 					Log.info("Entered User name and password do not match our records");
 					throw new BusinessException("Entered User name and password do not match our records");
@@ -48,10 +45,7 @@ public class CustomerSearchServiceImpl implements CustomerSearchService {
 	public int getUserId(String username) throws BusinessException {
 		int id = 0;
 		id = customerSearch.getUserId(username);
-		if (id > 0) {
-			Log.info("User id retrieved succesully");
-		} else {
-//			Log.info("Unable to retrieve id");
+		if (id <= 0) {
 			throw new BusinessException("Unable to retrieve id");
 		}
 		return id;
@@ -64,7 +58,7 @@ public class CustomerSearchServiceImpl implements CustomerSearchService {
 			if (customer != null) {
 				return customer;
 			} else {
-				throw new BusinessException("Unable to retrieve the Customer Class");
+				throw new BusinessException("Unable to retrieve the Customer");
 			}
 		} else {
 			return null;

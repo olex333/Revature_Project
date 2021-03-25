@@ -98,7 +98,7 @@ public class BankSearchDAOImpl implements BankSearchDAO {
 
 			}
 			} catch (ClassNotFoundException | SQLException e) {
-				Log.info(e);
+//				Log.info(e);
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}

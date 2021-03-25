@@ -39,12 +39,10 @@ Employee employee = null;
 
 			}
 			} catch (ClassNotFoundException | SQLException e) {
-//				Log.info(user);
-				Log.info(e);
+
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}
-		Log.info(employee);
 			
 			
 		return employee;

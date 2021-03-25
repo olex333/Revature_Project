@@ -35,11 +35,11 @@ public class CustomerSearchDAOImpl implements  CustomerSearchDAO {
 			}
 			} catch (ClassNotFoundException | SQLException e) {
 //				Log.info(user);
-				Log.info(e);
+//				Log.info(e);
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}
-		Log.info(user);
+//		Log.info(user);
 			
 			
 		return user;
@@ -60,12 +60,10 @@ public class CustomerSearchDAOImpl implements  CustomerSearchDAO {
 				id = resultSet.getInt("user_id");
 			}
 			} catch (ClassNotFoundException | SQLException e) {
-//				Log.info(user);
-				Log.info(e);
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}
-		Log.info(id);
+
 			
 			
 		return id;
@@ -98,11 +96,11 @@ public class CustomerSearchDAOImpl implements  CustomerSearchDAO {
 			}
 			} catch (ClassNotFoundException | SQLException e) {
 //				Log.info(user);
-				Log.info(e);
+//				Log.info(e);
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}
-		Log.info(customer);
+//		Log.info(customer);
 			
 			
 		return customer;
@@ -139,7 +137,6 @@ public class CustomerSearchDAOImpl implements  CustomerSearchDAO {
 				Log.warn("Internal Error");
 				throw new BusinessException("Internal Error");
 			}
-		Log.info(customer);
 			
 			
 		return customer;

@@ -13,13 +13,13 @@ import com.bankapp.model.Transaction;
 import com.bankapp.model.User;
 
 public class Main {
-//	private static CustomerLoginService customerLoginService = new CustomerLoginServiceImpl();
+
 	private static Logger Log = Logger.getLogger(Main.class);
 	PrintMenu menu = new PrintMenu();
 	private static MenuLogic menuLogic = new MenuLogic();
 
 	public static void main(String[] args) {
-		Log.info("Welcome to the Alexei bank" + " app V1.0");
+		Log.info("Welcome to the Extra Credit Union Bank");
 		Log.info("================");
 		PrintMenu menu = new PrintMenu();
 
@@ -27,7 +27,7 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 
 		do {
-//			Log.info("Are you a employee or customer?");//
+
 			menu.printUserMenu();
 			try {
 				ch = Integer.parseInt(scanner.nextLine());
@@ -36,11 +36,10 @@ public class Main {
 			}
 
 			switch (ch) {
-			// 1
+			
 //			*******************************************************************************
 			case 1:
 
-//				menu.printCustomerLoginMenu();
 				int ch_1 = 0;
 				do {
 					menu.printCustomerLoginMenu();
@@ -63,12 +62,11 @@ public class Main {
 							user = menuLogic.customerLogIn(scanner);
 							customer = menuLogic.getCustomerByUsername(user.getUsername());
 							logedIn = true;
-							Log.info(customer);
+//							Log.info(customer);
 						} catch (BusinessException e) {
-							// TODO Auto-generated catch block
-//						e.printStackTrace();
-							Log.info(e);
-//							menu.printCustomerLoginMenu();
+//							Log.info(e);
+							Log.warn("Entered User name and password do not match our records");
+
 						}
 						if (logedIn) {
 							int ch11 = 0;
@@ -77,14 +75,14 @@ public class Main {
 								try {
 									ch11 = Integer.parseInt(scanner.nextLine());
 								} catch (NumberFormatException e) {
-									Log.warn("Invalid Choice... Please enter a proper choice between 1-4 only");
+									Log.warn("Please enter a number only");
 								}
 //								menu.printLogedInMenu();
 								switch (ch11) {
 								// View Accounts
 //								*******************************************************************************
 								case 1:
-									Log.info("Here are the accounts");
+									Log.info("Here are the accounts \n");
 									List<Account> accounts = menuLogic.getAllAcountsById(customer.getCustomer_id());
 									for (int i = 0; i < accounts.size(); i++) {
 										Log.info((i + 1) + ") account id " + accounts.get(i).getAccountid()
@@ -95,7 +93,7 @@ public class Main {
 									do {
 										boolean activeAccount = false;
 										Account account = null;
-										Log.info("Select an account or press 9 to exit");
+										Log.info("\nSelect an account or press 9 to exit");
 										try {
 											ch_a = Integer.parseInt(scanner.nextLine());
 											if (ch_a == 9) {
@@ -132,7 +130,7 @@ public class Main {
 													try {
 														account = menuLogic.depositIntoAccount(scanner, account, customer);
 													} catch (BusinessException e) {
-														Log.info(e);
+														Log.warn("Unable to deposit the amount");
 													}
 													break;
 
@@ -141,7 +139,7 @@ public class Main {
 													try {
 														account = menuLogic.withdrawFromAccount(scanner, account, customer);
 													} catch (BusinessException e) {
-														Log.info(e);
+														Log.warn("Unable to withdraw the amount");
 													}
 													break;
 
@@ -192,7 +190,7 @@ public class Main {
 							} while (ch11 != 3);
 						}
 
-						menu.printCustomerLoginMenu();
+//						menu.printCustomerLoginMenu();
 						break;
 
 //						*******************************************************************************
@@ -225,8 +223,8 @@ public class Main {
 				break;
 //			*******************************************************************************
 			case 2:
-//				Log.info("Under Construction");
-//				menu.printEmployeeLoginMenu();
+
+
 				int ch22 = 0;
 				do {
 					menu.printEmployeeLoginMenu();
@@ -245,12 +243,12 @@ public class Main {
 						try {
 							employee = menuLogic.EmpoyeeLogIn(scanner);
 							employeelogedIn = true;
-							Log.info(employee);
-							Log.info(employeelogedIn);
+//							Log.info(employee);
+//							Log.info(employeelogedIn);
 
 						} catch (BusinessException e) {
 //					e.printStackTrace();
-							Log.info(e);
+							Log.warn("Entered User name and password are invalid");
 						}
 
 						if (employeelogedIn) {
@@ -260,48 +258,52 @@ public class Main {
 								try {
 									ch33 = Integer.parseInt(scanner.nextLine());
 								} catch (NumberFormatException e) {
-									Log.warn(e);
+									Log.warn("Please enter only a number");
 								}
 								int ch5 = 0;
 								switch (ch33) {
 								// case 1 would be approve or reject accounts
 								case 1:
 									do {
-									Log.info("Here are the accounts pending approval or rejection");
+//									Log.info("Here are the accounts pending approval or rejection");
 									List<Account> accounts = menuLogic.getAllPendingAcounts();
+									if (accounts.size() == 0) {
+//										Log.warn("No pending accounts found");
+										break;
+									}
+									Log.info("Here are the accounts pending approval or rejection");
 									Log.info("Select an account or press 9 to exit");
 									for (int i = 0; i < accounts.size(); i++) {
 										Log.info((i + 1) + ") account id " + accounts.get(i).getAccountid()
 												+ " with balance " + accounts.get(i).getBalance());
 									}
-//									do {
+
 										boolean activeEmployee = false;
 										Account account = null;
-//										int ch5 = 0;
-//										Log.info("Select an account or press 9 to exit");
+
 										try {
 											ch5 = Integer.parseInt(scanner.nextLine());
 											if (ch5 == 9) {
-//												menu.printEmployeeOptionsMenu();
+
 												break;
 											}
 											account = accounts.get((ch5 - 1));
 											activeEmployee = true;
-											Log.info(activeEmployee);
+//											Log.info(activeEmployee);
 
 										} catch (NumberFormatException | IndexOutOfBoundsException e) {
-											Log.warn(e);
+//											Log.warn(e);
 											Log.warn("Wrong choice or wrong format");
 										}
-										Log.info(activeEmployee);
 										if (activeEmployee) {
 											int ch6 = 0;
+											start1: {
 											do {
 												menu.printEmployeePendingAccountAction();
 												try {
 													ch6 = Integer.parseInt(scanner.nextLine());
 												} catch (NumberFormatException e) {
-													Log.warn(e);
+													Log.warn("Wrong choice or wrong format");
 												}
 
 												switch (ch6) {
@@ -313,7 +315,7 @@ public class Main {
 														Log.warn("Unable to Approve the account");
 													}
 													ch6 = 3;
-													break;
+													break start1;
 												case 2:
 													try {
 														menuLogic.rejectAccount(account.getAccountid());
@@ -321,13 +323,12 @@ public class Main {
 													} catch (BusinessException e) {
 														Log.warn("Unable to Reject the account");
 													}
-//													Log.info("Under Construction");
-													ch6 = 3;
-													break;
+//													ch6 = 3;
+													break start1;
 												case 3:
 													Log.info("Exiting the menu");
 													ch5 = 9;
-													break;
+													break start1;
 
 												default:
 													Log.info(
@@ -335,41 +336,40 @@ public class Main {
 													break;
 												}
 											} while (ch6 != 3);
+											}
 //											
 										}
 									} while (ch5 != 9);
 
-									Log.info("Under Construction");
 
 									break;
 
 								// view customers bank account
 								case 2:
-									Log.info("Under Construction");
 									Customer customer = null;
 									try {
 					
 										customer = menuLogic.getCustomerById(scanner);
 										List<Account> accounts = menuLogic.getAllAcountsById(customer.getCustomer_id());
+										if (accounts.size() > 0) {
+										Log.info("Here is the list of customers bank accounts\n");
 										for (int i = 0; i < accounts.size(); i++) {
 											Log.info((i + 1) + ") account id " + accounts.get(i).getAccountid()
 													+ " with balance " + accounts.get(i).getBalance());
 										}
-										
-//										Log.info(customer);
+										} else {
+											Log.info("No accounts found for the customer with id " + customer.getCustomer_id() );
+										}
+
 									} catch (BusinessException e) {
 
-										Log.info("Unable to view the particular customers account");
-//										menu.printCustomerLoginMenu()
+										Log.info("Unable to view the particular customer's account, Maybe customer doesn't have active accounts?");
+
 									}
 									break;
 
 								case 3:
 									Log.info("Here is the Log of Transactions");
-//									****
-//									****
-//									********
-//									****
 									try {
 										
 									List<Transaction> transactions = menuLogic.LogOfTransactions();
@@ -405,7 +405,7 @@ public class Main {
 						try {
 							menuLogic.createNewEmployeeAccount(scanner);
 						} catch (BusinessException e) {
-							Log.info(e);
+//							Log.warn("The information enter is invalid format");
 						}
 						break;
 						

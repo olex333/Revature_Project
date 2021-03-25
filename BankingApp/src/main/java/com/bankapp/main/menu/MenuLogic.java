@@ -31,8 +31,6 @@ import com.bankapp.user.customer.service.impl.CustomerCRUDServiceImpl;
 import com.bankapp.user.customer.service.impl.CustomerSearchServiceImpl;
 
 public class MenuLogic {
-//	private static CustomerLoginService customerLoginService = new CustomerLoginServiceImpl();
-//	private static CustomerLoginDao customerLoginDao = new CustomerLoginDAOImpl();
 	private static Logger Log = Logger.getLogger(MenuLogic.class);
 	PrintMenu menu = new PrintMenu();
 	CustomerCRUDDAO customerCRUDdao = new CustomerCRUDDAOImpl();
@@ -46,21 +44,11 @@ public class MenuLogic {
 	
 	public User customerLogIn(Scanner scanner) throws BusinessException {
 		User user = null;
-//		menu.printCustomerLoginMenu();
 		Log.info("Enter username: ");
 		String username = scanner.nextLine();
 		Log.info("Enter password: ");
 		String password = (scanner.nextLine());
-//		try {
 		user = customerSearchService.logIn(username, password);
-//			if(user != null) {
-//				Log.info("Logging succesful");
-//			}
-//		} catch (BusinessException e) {
-		// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			Log.info(e);
-//		}
 		return user;
 	}
 
@@ -134,7 +122,7 @@ public class MenuLogic {
 		int user_id = 0;
 		user_id = customerSearchService.getUserId(username);
 		Customer customer = customerSearchService.getCustomer(user_id);
-		Log.info(customer);
+//		Log.info(customer);
 		return customer;
 	}
 
@@ -143,21 +131,12 @@ public class MenuLogic {
 		try {
 		accounts = bankSearchService.getAllAccountsById(customer_id);
 		} catch(BusinessException e) {
-		Log.info(e);
+//		Log.warn("Unable to retrieve customers accounts");
 		}
 		return accounts;
 	}
 	
-//	public List<Account> getAllActiveAcounts(int customer_id) {
-//		List<Account> accounts = new ArrayList<>();
-//		int status = 1;
-//		try {
-//		accounts = customerLoginService.getAccounts(customer_id,status);
-//		} catch(BusinessException e) {
-//		Log.info(e);
-//		}
-//		return accounts;
-//	}
+
 	
 	public List<Account> getAllPendingAcounts() {
 		List<Account> accounts = new ArrayList<>();
@@ -165,7 +144,7 @@ public class MenuLogic {
 		try {
 		accounts = bankSearchService.getAllAccountsByStatus(status);
 		} catch(BusinessException e) {
-		Log.info(e);
+		Log.warn("No pending accounts found");
 		}
 		return accounts;
 	}
@@ -204,7 +183,7 @@ public class MenuLogic {
 		transaction.setType(1);
 		
 		if (deposit < 0) {
-			Log.error("deposit cannot be negative");
+			Log.error("Deposit ammount cannot be negative");
 			transaction.setStatus("Failure");
 			c = bankCRUDDAO.recordTransaction(transaction);
 			throw new BusinessException("Unable to deposit the amount");
@@ -239,7 +218,7 @@ public class MenuLogic {
 		transaction.setType(2);
 		
 		if (withdraw < 0) {
-			Log.error("Withdraw should a positive number");
+			Log.error("Withdraw amount should be a positive number");
 			transaction.setStatus("Failure");
 			c = bankCRUDDAO.recordTransaction(transaction);
 			throw new BusinessException("Unable to withdraw the amount");
@@ -294,7 +273,6 @@ public class MenuLogic {
 		Log.info("Enter customer_id: ");
 		int customer_id = Integer.parseInt(scanner.nextLine());
 		Customer customer = customerSearchService.getCustomerByCustomerId(customer_id);
-		Log.info(customer);
 		return customer;
 	}
 
@@ -305,9 +283,8 @@ public class MenuLogic {
 		int account_id = Integer.parseInt(scanner.nextLine());
 		try {
 			receivingAccount = bankSearchService.getAccountByAccountId(account_id);
-			Log.info(receivingAccount);
+//			Log.info(receivingAccount);
 		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
 			Log.warn("Unable to get the customer, maybe wrong id?");
 			throw new BusinessException();
 		}
@@ -320,19 +297,22 @@ public class MenuLogic {
 		}
 		Log.info("Enter the transfer amount : ");
 		double transaction_amount = Double.parseDouble(scanner.nextLine());
-//		if (account.getBalance() - transaction_amount < 0) {
-//			Log.error("Cannot transfer more funds than  current balance");
-//			throw new BusinessException();
-//		}
+
 		Transaction transaction = new Transaction();
 		transaction.setAccountid(account_id);
 		transaction.setAmount(transaction_amount);
-//		transaction.setDate(new Date(System.currentTimeMillis()));
 		transaction.setCustomerid(customer.getCustomer_id());
 		transaction.setTarget_id(receivingAccount.getAccountid());
 		int type = 3;
 		transaction.setType(type);
 		transaction.setStatus("Success");
+		
+		if (transaction_amount < 0) {
+			Log.error("Cannot transfer negative amount");
+			transaction.setStatus("Failure");
+			c = bankCRUDDAO.recordTransaction(transaction);
+			throw new BusinessException();
+		}
 		
 		if (account.getBalance() - transaction_amount < 0) {
 			Log.error("Cannot transfer more funds than  current balance");

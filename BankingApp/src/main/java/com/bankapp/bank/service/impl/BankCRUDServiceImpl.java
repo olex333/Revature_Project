@@ -52,6 +52,7 @@ public class BankCRUDServiceImpl implements BankCRUDService {
 	if (newBalance < 0) {
 		transaction.setStatus("Failure");
 		c = bankCRUD.recordTransaction(transaction);
+		Log.warn("The withdraw amount exceeds the balance");
 		throw new BusinessException("The withdraw amount exceeds the balance");
 	} else {
 	try {

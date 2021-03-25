@@ -43,13 +43,13 @@ public class PrintMenu {
 		Log.info("1) View balance");
 		Log.info("2) Make a deposit");
 		Log.info("3) Withdraw money");
-		Log.info("4) transfer money to another account");
+		Log.info("4) Transfer money to another account");
 		Log.info("5) Exit");
 	}
 	
 	public void printEmployeeOptionsMenu() {
 		Log.info("\nMenu");
-		Log.info("1) Aprove or Reject Accounts");
+		Log.info("1) Approve or Reject Accounts");
 		Log.info("2) View customers Bank Account");
 		Log.info("3) View log of all the transactions");
 		Log.info("4) Exit");
@@ -63,7 +63,6 @@ public class PrintMenu {
 	}
 	
 	
-	
-//	public void 
+
 
 }
